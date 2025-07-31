@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-ChickenLDTK-0009.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"E:/Unreal Projects/CozyCookingGame/Intermediate/Build/Win64/x64/CozyCookingGameEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.InclOrderUnreal5_3.h.obj"
+"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/Module.ChickenLDTK.cpp.obj"
+"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/AssetTypeActions_LDtkAsset.cpp.obj"
+"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/ChickenLDTK.cpp.obj"
+"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/LDtkFactory.cpp.obj"
+"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/LDtkMapAsset.cpp.obj"
+"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/Default.rc2.res"
+/OUT:"E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/UnrealEditor-ChickenLDTK-0009.lib"
