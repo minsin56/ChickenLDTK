@@ -85,7 +85,7 @@ namespace ldtk {
     {
         if (m_fields.count(name) > 0) {
             const auto* field = m_fields.at(name);
-            const auto* ret = dynamic_cast<const Field<T>*>(field);
+            const auto* ret = static_cast<const Field<T>*>(field);
             if (ret) {
                 return *ret;
             }
@@ -99,7 +99,7 @@ namespace ldtk {
     {
         if (m_array_fields.count(name) > 0) {
             const auto* field = m_array_fields.at(name);
-            const auto* ret = dynamic_cast<const ArrayField<T>*>(field);
+            const auto* ret = static_cast<const ArrayField<T>*>(field);
             if (ret) {
                 return *ret;
             }

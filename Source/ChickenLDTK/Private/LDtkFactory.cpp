@@ -73,6 +73,70 @@ UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FNa
 
 				for (const auto& Field: Entity.allFields())
 				{
+					auto Name = ANSI_TO_TCHAR(Field.name.c_str());
+					switch (Field.type)
+					{
+					case ldtk::FieldType::Int:
+						{
+							int Val = Entity.getField<ldtk::FieldType::Int>(Field.name.c_str()).value_or(0);
+							Ent.Fields.Add({FString(Name), FString(std::to_string(Val).c_str())});
+
+							break;
+						}
+						
+					case ldtk::FieldType::Float:
+						{
+							float Val = Entity.getField<ldtk::FieldType::Float>(Field.name.c_str()).value_or(0.0f);
+							Ent.Fields.Add({FString(Name), FString(std::to_string(Val).c_str())});
+
+							break;
+						}
+					case ldtk::FieldType::Bool:
+						{
+							bool Val = Entity.getField<ldtk::FieldType::Bool>(Field.name.c_str()).value_or(false);
+							Ent.Fields.Add({FString(Name), FString(std::to_string(Val).c_str())});
+
+							break;
+						}
+					case ldtk::FieldType::String:
+						{
+
+							break;
+						}
+					case ldtk::FieldType::Color:
+						break;
+					case ldtk::FieldType::Point:
+						break;
+					case ldtk::FieldType::Enum:
+						break;
+					case ldtk::FieldType::FilePath:
+						break;
+					case ldtk::FieldType::Tile:
+						break;
+					case ldtk::FieldType::EntityRef:
+						break;
+					case ldtk::FieldType::ArrayInt:
+						break;
+					case ldtk::FieldType::ArrayFloat:
+						break;
+					case ldtk::FieldType::ArrayBool:
+						break;
+					case ldtk::FieldType::ArrayString:
+						break;
+					case ldtk::FieldType::ArrayColor:
+						break;
+					case ldtk::FieldType::ArrayPoint:
+						break;
+					case ldtk::FieldType::ArrayEnum:
+						break;
+					case ldtk::FieldType::ArrayFilePath:
+						break;
+					case ldtk::FieldType::ArrayTile:
+						break;
+					case ldtk::FieldType::ArrayEntityRef:
+						break;
+					}
+					
 				}
 
 
