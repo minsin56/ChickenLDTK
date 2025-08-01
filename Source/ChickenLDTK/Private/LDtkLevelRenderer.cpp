@@ -14,7 +14,7 @@
 
 
 // Sets default values
-ALDtkLevelRenderer::ALDtkLevelRenderer()
+ALDtkLevelRenderer::ALDtkLevelRenderer()	
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -28,74 +28,13 @@ void ALDtkLevelRenderer::BeginPlay()
 {
 	Super::BeginPlay();
 
-}
-
-void ALDtkLevelRenderer::BuildMap()
-{
-	if (!MapAsset)
+	for (FLDtkEntity Element : MapAsset->Entities)
 	{
-		return;
+		Element.Position.Y = -Element.Position.Y;
+		OnOverrideEntity(Element);
 	}
 
-
-	for (const FLDtkTileLayer& Layer : MapAsset->TileLayers)
-	{
-		if (Layer.Tiles.Num() == 0)
-			continue;
-
-		FString SourceImage = Layer.Tiles[0].TileSetPath;
-		FString AssetName = FPaths::GetBaseFilename(SourceImage) + TEXT("_TileSet");
-		UPaperTileSet* TileSet = FindTileSetByName(AssetName);
-
-
-		if (!TileSet)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("TileSet '%s' not found for layer %s"), *AssetName, *Layer.LayerName);
-			continue;
-		}
-
-		// Create tile map
-		UPaperTileMap* TileMap = NewObject<UPaperTileMap>();
-		TileMap->MapWidth = MapAsset->LevelWidth / 16;
-		TileMap->MapHeight = MapAsset->LevelHeight / 16;
-		TileMap->TileWidth = 16;
-		TileMap->TileHeight = 16;
-		TileMap->AddNewLayer();
-		// Create tilemap component
-		UPaperTileMapComponent* TileMapComponent = NewObject<UPaperTileMapComponent>(this);
-		TileMapComponent->SetTileMap(TileMap);
-		TileMapComponent->SetupAttachment(RootComponent);
-		TileMapComponent->RegisterComponent();
-		TileMapComponent->SetRelativeLocation(FVector(0, 0, 0));
-		AddInstanceComponent(TileMapComponent);
-
-
-		// Fill tile layer
-		for (const FLDtkTile& Tile : Layer.Tiles)
-		{
-			FPaperTileInfo TileInfo;
-			TileInfo.TileSet = TileSet;
-
-			TileInfo.PackedTileIndex = Tile.TileID & 0xFFFF;
-			int32 X = FMath::FloorToInt(Tile.Position.X / TileMap->TileWidth);
-			int32 Y = FMath::FloorToInt(Tile.Position.Y / 16);
-
-			TileMapComponent->SetTile(X, Y, 0, TileInfo);
-
-		}
-
-		FPaperTileInfo TileInfo;
-		TileInfo.TileSet = TileSet;
-		
-	
-		
-		TileMapComponent->MarkRenderStateDirty();       // Marks the component for visual update
-		TileMapComponent->MarkPackageDirty();           // (optional) marks asset dirty in editor
-		TileMapComponent->UpdateBounds();               // Updates component bounds for rendering
-		TileMapComponent->InvalidateLightingCache();     
-	}
 }
-
 // Called every frame
 void ALDtkLevelRenderer::Tick(float DeltaTime)
 {
@@ -144,7 +83,6 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 	int32 AtlasHeight = TileSet->GetTileSheetTexture()->GetSizeY();
 	int32 TilesPerRow = AtlasWidth / TileSet->GetTileSize().X;
 	int32 TileSize = TileSet->GetTileSize().X;
-	float WorldTileSize = TileSize * 0.05f;
 
 	for (auto Tile : LayerAsset.Tiles)
 	{
@@ -161,7 +99,7 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 		float U1 = (SrcX + TileSize) / AtlasWidth;
 		float V1 = (SrcY + TileSize) / AtlasHeight;
 
-		FVector BasePos = FVector(X,LayerIndex * 0.05f,-Y);
+		FVector BasePos = FVector(X,LayerIndex * 0.5f,-Y);
 
 
 		Vertices.Add(BasePos);
@@ -182,13 +120,14 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 		Indices.Add(VertexIndex + 3);
 
 		
-		Normals.Append({ FVector(0, 1, 0), FVector(0, 1, 0), FVector(0, 1, 0), FVector(0, 1, 0) });
+		Normals.Append({ FVector(0, -1, 0), FVector(0, -1, 0), FVector(0, -1, 0), FVector(0, -1, 0) });
+		
 		Tangents.Append({ FProcMeshTangent(1, 0, 0), FProcMeshTangent(1, 0, 0), FProcMeshTangent(1, 0, 0), FProcMeshTangent(1, 0, 0) });
 		Colors.Append({ FLinearColor::White, FLinearColor::White, FLinearColor::White, FLinearColor::White });
 
 		VertexIndex += 4;
 	}
-	MeshComponent->CreateMeshSection_LinearColor(LayerIndex,Vertices,Indices,Normals,UVs,Colors,Tangents,true);
+	MeshComponent->CreateMeshSection_LinearColor(LayerIndex,Vertices,Indices,Normals,UVs,Colors,Tangents,false);
 
 	if (IsValid(TileSet))
 	{

@@ -14,12 +14,16 @@
 #include "LDtkLoader/Project.hpp"
 TMap<FString,UPaperTileSet*>  ULDtkFactory::ImportedTileSets;
 
+ULDtkFactory* ULDtkFactory::Instance;
+
 ULDtkFactory::ULDtkFactory()
 {
 	bEditorImport = true;
+	bCreateNew = false;
 	bText = false;
 	SupportedClass = ULDtkMapAsset::StaticClass();
 	Formats.Add(TEXT("ldtk;LDtk Map File"));
+	Instance = this;
 }
 
 UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FName InName, EObjectFlags Flags, const FString& Filename, const TCHAR* Parms, FFeedbackContext* Warn, bool& bOutOperationCanceled)
@@ -31,13 +35,32 @@ UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FNa
 		UE_LOG(LogTemp,Error,TEXT("Failed To Load File"));
 		return nullptr;
 	}
+	ULDtkMapAsset* NewAsset = NewObject<ULDtkMapAsset>(InParent,InClass,InName,Flags);
+	
+	Import(NewAsset,FileContents,Filename);
+
+	return NewAsset;
+}
+
+UTexture2D* ULDtkFactory::FindExistingTexture(const FString& AssetPath)
+{
+	FString ObjectPath = FString::Printf(TEXT("/Game/%s.%s"),
+			*AssetPath.Replace(TEXT("\\"), TEXT("/")), *FPaths::GetBaseFilename(AssetPath));
+
+	return Cast<UTexture2D>(StaticLoadObject(UTexture2D::StaticClass(), nullptr, *ObjectPath));
+}
+
+void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FString& Filename)
+{
+
+
 
 	ldtk::Project Proj;
-	Proj.loadFromMemory(reinterpret_cast<const unsigned char*>(TCHAR_TO_UTF8(*FileContents)),FileContents.Len());
+	Proj.loadFromMemory(reinterpret_cast<const unsigned char*>(TCHAR_TO_UTF8(*Contents)),Contents.GetAllocatedSize());
 	const auto& Level = Proj.getWorld().allLevels()[0];
 
-	ULDtkMapAsset* NewAsset = NewObject<ULDtkMapAsset>(InParent,InClass,InName,Flags);
 	NewAsset->LevelName = FString(Level.name.c_str());
+	NewAsset->AssetImportData->UpdateFilenameOnly(Filename);
 
 
 
@@ -67,9 +90,10 @@ UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FNa
 		{
 			for (const auto& Entity: Layer.allEntities())
 			{
-				FLdtkEntity Ent;
+				FLDtkEntity Ent;
 				Ent.Name = FString(Entity.getName().c_str());
 				Ent.Position = FVector2D(Entity.getPosition().x, Entity.getPosition().y);
+				Ent.Size = FVector2D(Entity.getSize().x, Entity.getSize().y);
 
 				for (const auto& Field: Entity.allFields())
 				{
@@ -108,9 +132,9 @@ UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FNa
 					case ldtk::FieldType::Point:
 						break;
 					case ldtk::FieldType::Enum:
-						break;
-					case ldtk::FieldType::FilePath:
-						break;
+						{
+							break;
+						}
 					case ldtk::FieldType::Tile:
 						break;
 					case ldtk::FieldType::EntityRef:
@@ -170,18 +194,8 @@ UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FNa
 
 	NewAsset->TileSizeX = 16;
 	NewAsset->TileSizeY = 16;
-
-
-	return NewAsset;
 }
 
-UTexture2D* ULDtkFactory::FindExistingTexture(const FString& AssetPath)
-{
-	FString ObjectPath = FString::Printf(TEXT("/Game/%s.%s"),
-			*AssetPath.Replace(TEXT("\\"), TEXT("/")), *FPaths::GetBaseFilename(AssetPath));
-
-	return Cast<UTexture2D>(StaticLoadObject(UTexture2D::StaticClass(), nullptr, *ObjectPath));
-}
 
 UTexture2D* ULDtkFactory::ImportTexture(const FString& SourcePath, const FString& DestFolder)
 {
@@ -271,5 +285,56 @@ UPaperTileSet* ULDtkFactory::ImportAndCreateTileSet(const FString& ImagePath, co
     FAssetRegistryModule::AssetCreated(TileSet);
 
     return TileSet;
+}
+
+bool ULDtkFactory::FactoryCanImport(const FString& Filename)
+{
+	return Filename.EndsWith(TEXT(".ldtk"));
+
+}
+
+bool ULDtkFactory::CanReimport(UObject* Obj, TArray<FString>& OutFilenames)
+{
+	if (ULDtkMapAsset* Asset = Cast<ULDtkMapAsset>(Obj))
+	{
+		if (Asset->AssetImportData)
+		{
+			OutFilenames.Add(Asset->AssetImportData->GetFirstFilename());
+			return true;
+		}
+	}
+	return false;
+}
+
+void ULDtkFactory::SetReimportPaths(UObject* Obj, const TArray<FString>& NewReimportPaths)
+{
+	
+	if (ULDtkMapAsset* Asset = Cast<ULDtkMapAsset>(Obj))
+	{
+		if (NewReimportPaths.Num() > 0)
+		{
+			Asset->AssetImportData->UpdateFilenameOnly(NewReimportPaths[0]);
+		}
+	}
+}
+
+EReimportResult::Type ULDtkFactory::Reimport(UObject* Obj)
+{
+	ULDtkMapAsset* Asset = Cast<ULDtkMapAsset>(Obj);
+	if (!Asset) return EReimportResult::Failed;
+
+	const FString Filename = Asset->AssetImportData->GetFirstFilename();
+	FString FileContents;
+	if (!FFileHelper::LoadFileToString(FileContents, *Filename))
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to reimport LDtk file: %s"), *Filename);
+		return EReimportResult::Failed;
+	}
+
+	Asset->Entities.Empty();
+	Asset->TileLayers.Empty();
+	Import(Asset,FileContents,Filename);
+	Asset->MarkPackageDirty();
+	return EReimportResult::Succeeded;
 }
 

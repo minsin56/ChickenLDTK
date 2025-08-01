@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeChickenLDTK_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000040,
-				0x6265172B,
-				0xE1003971,
+				0x7D7D8779,
+				0x442FF36C,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_ChickenLDTK.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_ChickenLDTK.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_ChickenLDTK(Z_Construct_UPackage__Script_ChickenLDTK, TEXT("/Script/ChickenLDTK"), Z_Registration_Info_UPackage__Script_ChickenLDTK, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x6265172B, 0xE1003971));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_ChickenLDTK(Z_Construct_UPackage__Script_ChickenLDTK, TEXT("/Script/ChickenLDTK"), Z_Registration_Info_UPackage__Script_ChickenLDTK, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x7D7D8779, 0x442FF36C));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

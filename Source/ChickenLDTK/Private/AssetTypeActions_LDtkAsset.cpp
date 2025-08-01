@@ -4,6 +4,7 @@
 #include "AssetTypeActions_LDtkAsset.h"
 
 
+#include "LDtkFactory.h"
 #include "LDtkMapAsset.h"
 #include "Editor/UnrealEd/Public/Toolkits/AssetEditorToolkit.h"
 
@@ -34,15 +35,31 @@ bool FAssetTypeActions_LDtkAsset::HasActions(const TArray<UObject*>&) const
 	return false;
 }
 
-void FAssetTypeActions_LDtkAsset::OpenAssetEditor(const TArray<UObject*>& InObjects, TSharedPtr<IToolkitHost> EditWithinLevelEditor)
+void FAssetTypeActions_LDtkAsset::GetActions(const TArray<UObject*>& InObjects, FMenuBuilder& MenuBuilder)
 {
-	for (auto ObjIt = InObjects.CreateConstIterator(); ObjIt; ++ObjIt)
-	{
-		if (ULDtkMapAsset* LDtkAsset = Cast<ULDtkMapAsset>(*ObjIt))
-		{
-			// Just use default DataAsset editor
+	FText ButtonLabel=FText::FromString("Reimport/Replace");
+	FText ButtonToolTip=FText::FromString("Replaces From Disk");
 
-			
+	auto LDtkAssets = GetTypedWeakObjectPtrs<ULDtkMapAsset>(InObjects);
+
+
+	auto ExecAction = FExecuteAction::CreateSP(this,&FAssetTypeActions_LDtkAsset::ReimportAssets,LDtkAssets);
+
+	auto UIAction = FUIAction(ExecAction);
+
+	MenuBuilder.AddMenuEntry(ButtonLabel,ButtonToolTip,FSlateIcon(),UIAction);
+
+}
+
+void FAssetTypeActions_LDtkAsset::ReimportAssets(TArray<TWeakObjectPtr<ULDtkMapAsset>> Assets)
+{
+	for (auto Asset:Assets)
+	{
+		ULDtkMapAsset* LDTKAsset = Asset.Get();
+
+		if (LDTKAsset)
+		{
+			ULDtkFactory::Instance->Reimport(LDTKAsset);
 		}
 	}
 }

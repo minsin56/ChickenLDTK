@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EditorFramework/AssetImportData.h"
 #include "Engine/DataAsset.h"
 #include "LDtkLoader/Layer.hpp"
 #include "LDtkMapAsset.generated.h"
@@ -12,7 +13,7 @@
  */
 
 USTRUCT(BlueprintType)
-struct FLdtkEntity
+struct FLDtkEntity
 {
 	GENERATED_BODY()
 public:
@@ -21,6 +22,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector2D Position;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector2D WorldPosition;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector2D Size;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<FString,FString> Fields;
@@ -63,7 +69,7 @@ struct FLDtkTileLayer
 };
 
 UCLASS(BlueprintType)
-class CHICKENLDTK_API ULDtkMapAsset : public UDataAsset
+class CHICKENLDTK_API ULDtkMapAsset : public UObject
 {
 	GENERATED_BODY()
 public:
@@ -71,12 +77,22 @@ public:
 	FString LevelName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TArray<FLdtkEntity> Entities;
+	TArray<FLDtkEntity> Entities;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FLDtkTileLayer> TileLayers;
 
-	
+	UPROPERTY(VisibleAnywhere, Instanced, Category = Import)
+	TObjectPtr<UAssetImportData> AssetImportData;
+
+	virtual void PostInitProperties() override
+	{
+		Super::PostInitProperties();
+		if (!HasAnyFlags(RF_ClassDefaultObject))
+		{
+			AssetImportData = NewObject<UAssetImportData>(this, TEXT("AssetImportData"));
+		}
+	}
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)

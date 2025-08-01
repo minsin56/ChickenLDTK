@@ -16,17 +16,17 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// ********** Begin ScriptStruct FLdtkEntity *******************************************************
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_17_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLdtkEntity_Statics; \
+// ********** Begin ScriptStruct FLDtkEntity *******************************************************
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_18_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FLDtkEntity_Statics; \
 	CHICKENLDTK_API static class UScriptStruct* StaticStruct();
 
 
-struct FLdtkEntity;
-// ********** End ScriptStruct FLdtkEntity *********************************************************
+struct FLDtkEntity;
+// ********** End ScriptStruct FLDtkEntity *********************************************************
 
 // ********** Begin ScriptStruct FLDtkTile *********************************************************
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_32_GENERATED_BODY \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_38_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FLDtkTile_Statics; \
 	CHICKENLDTK_API static class UScriptStruct* StaticStruct();
 
@@ -35,7 +35,7 @@ struct FLDtkTile;
 // ********** End ScriptStruct FLDtkTile ***********************************************************
 
 // ********** Begin ScriptStruct FLDtkTileLayer ****************************************************
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_51_GENERATED_BODY \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_57_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FLDtkTileLayer_Statics; \
 	CHICKENLDTK_API static class UScriptStruct* StaticStruct();
 
@@ -46,18 +46,18 @@ struct FLDtkTileLayer;
 // ********** Begin Class ULDtkMapAsset ************************************************************
 CHICKENLDTK_API UClass* Z_Construct_UClass_ULDtkMapAsset_NoRegister();
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_68_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_74_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesULDtkMapAsset(); \
 	friend struct Z_Construct_UClass_ULDtkMapAsset_Statics; \
 	static UClass* GetPrivateStaticClass(); \
 	friend CHICKENLDTK_API UClass* Z_Construct_UClass_ULDtkMapAsset_NoRegister(); \
 public: \
-	DECLARE_CLASS2(ULDtkMapAsset, UDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/ChickenLDTK"), Z_Construct_UClass_ULDtkMapAsset_NoRegister) \
+	DECLARE_CLASS2(ULDtkMapAsset, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/ChickenLDTK"), Z_Construct_UClass_ULDtkMapAsset_NoRegister) \
 	DECLARE_SERIALIZER(ULDtkMapAsset)
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_68_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_74_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ULDtkMapAsset(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -69,12 +69,12 @@ public: \
 	NO_API virtual ~ULDtkMapAsset();
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_65_PROLOG
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_68_GENERATED_BODY \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_71_PROLOG
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_74_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_68_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_68_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_74_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h_74_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

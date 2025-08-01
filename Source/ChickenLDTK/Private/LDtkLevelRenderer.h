@@ -29,12 +29,12 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UMaterialInterface* Material;
 
+	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	void BuildMap();
-
+	
 	int LayerIndex = 0;
 
 public:
@@ -45,6 +45,9 @@ public:
 
 	void LoadAndGenMesh();
 	void GenTileLayer(FLDtkTileLayer LayerAsset);
+
+	UFUNCTION(BlueprintImplementableEvent, Category="LDTK")
+	void OnOverrideEntity(FLDtkEntity Entity);
 
 	UPaperTileSet* FindTileSetByName(const FString& AssetName)
 	{

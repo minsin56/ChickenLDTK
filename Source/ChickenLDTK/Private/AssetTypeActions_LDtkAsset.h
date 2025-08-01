@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AssetTypeActions_Base.h"
+#include "AssetTypeActions/AssetTypeActions_DataAsset.h"
 
 /**
  * 
@@ -21,8 +22,12 @@ public:
 	virtual UClass* GetSupportedClass() const override;
 	virtual uint32 GetCategories() override;
 	virtual bool HasActions(const TArray<UObject*>& InObjects) const override;
-	virtual void OpenAssetEditor(const TArray<UObject*>& InObjects,
-								 TSharedPtr<class IToolkitHost> EditWithinLevelEditor) override;
+	
+
+	virtual void GetActions(const TArray<UObject*>& InObjects, FMenuBuilder& MenuBuilder) override;
+
+	void ReimportAssets(TArray<TWeakObjectPtr<ULDtkMapAsset>> Assets);
+
 
 private:
 	EAssetTypeCategories::Type MyAssetCategory;

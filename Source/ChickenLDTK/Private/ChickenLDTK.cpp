@@ -24,7 +24,7 @@ void FChickenLDTKModule::StartupModule()
 		FName(TEXT("LDtk")),
 		LOCTEXT("LDtkAssetCategory", "LDtk")
 	);
-	auto AssetTypeAction = MakeShared<FAssetTypeActions_DataAsset>();
+	auto AssetTypeAction = MakeShared<FAssetTypeActions_LDtkAsset>(AssetCategory);
 	AssetTools.RegisterAssetTypeActions(AssetTypeAction);
 
 }

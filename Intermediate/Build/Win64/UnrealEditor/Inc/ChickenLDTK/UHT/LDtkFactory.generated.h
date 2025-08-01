@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class ULDtkFactory *************************************************************
 CHICKENLDTK_API UClass* Z_Construct_UClass_ULDtkFactory_NoRegister();
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_16_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_19_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesULDtkFactory(); \
 	friend struct Z_Construct_UClass_ULDtkFactory_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(ULDtkFactory)
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_16_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_19_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ULDtkFactory(ULDtkFactory&&) = delete; \
 	ULDtkFactory(const ULDtkFactory&) = delete; \
@@ -40,12 +40,12 @@ public: \
 	NO_API virtual ~ULDtkFactory();
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_13_PROLOG
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_16_GENERATED_BODY \
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_16_PROLOG
+#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_19_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_16_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_16_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_19_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkFactory_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

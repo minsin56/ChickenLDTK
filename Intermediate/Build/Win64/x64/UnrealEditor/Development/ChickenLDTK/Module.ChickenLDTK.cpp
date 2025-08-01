@@ -3,4 +3,5 @@
 #include "E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkFactory.gen.cpp"
 #include "E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkLevelRenderer.gen.cpp"
 #include "E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkMapAsset.gen.cpp"
+#include "E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkReimportFactory.gen.cpp"
 #include "E:/Unreal Projects/CozyCookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/PerModuleInline.gen.cpp"

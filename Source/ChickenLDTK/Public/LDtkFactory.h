@@ -3,7 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EditorReimportHandler.h"
+#include "LDtkMapAsset.h"
 #include "PaperTileSet.h"
+#include "Factories/Factory.h"
 
 #include "LDtkFactory.generated.h"
 
@@ -11,12 +14,14 @@
  * 
  */
 UCLASS()
-class CHICKENLDTK_API ULDtkFactory : public UFactory
+class CHICKENLDTK_API ULDtkFactory : public UFactory,public FReimportHandler
 {
 	GENERATED_BODY()
 
 public:
 	ULDtkFactory();
+
+	static ULDtkFactory* Instance;
 
 	virtual UObject* FactoryCreateFile(
 	UClass* InClass,
@@ -37,4 +42,14 @@ public:
 	
 
 	static TMap<FString,UPaperTileSet*> ImportedTileSets;
+
+	virtual bool FactoryCanImport(const FString& Filename) override;
+
+	void Import(ULDtkMapAsset* NewAsset, FString& Contents,const FString& Filename);
+
+	// Reimport
+	virtual bool CanReimport(UObject* Obj, TArray<FString>& OutFilenames) override;
+	virtual void SetReimportPaths(UObject* Obj, const TArray<FString>& NewReimportPaths) override;
+	virtual EReimportResult::Type Reimport(UObject* Obj) override;
+	virtual int32 GetPriority() const override { return 1; }
 };
