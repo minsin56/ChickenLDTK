@@ -1,0 +1,17 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-ChickenLDTKEditor-0001.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"E:/Unreal Projects/CookingGame/Intermediate/Build/Win64/x64/CookingGameEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/Module.ChickenLDTKEditor.cpp.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/AssetTypeActions_LDtkAsset.cpp.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/ChickenLDTKEditorModule.cpp.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/LDtkDummyTestObject.cpp.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/LDtkFactory.cpp.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/LDtkReimportFactory.cpp.obj"
+"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/Default.rc2.res"
+/OUT:"E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTKEditor/UnrealEditor-ChickenLDTKEditor-0001.lib"

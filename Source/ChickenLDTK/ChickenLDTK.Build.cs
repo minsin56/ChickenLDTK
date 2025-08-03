@@ -35,15 +35,20 @@ public class ChickenLDTK : ModuleRules
 				"CoreUObject",
 				"Engine",
 				"InputCore",
-				"UnrealEd",
-				"AssetTools",
-				"EditorStyle",
 				"Json",
 				"JsonUtilities",
 				"Paper2D"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
+		
+		if (Target.bBuildEditor)
+		{
+			PrivateDependencyModuleNames.Add("UnrealEd");
+			PrivateDependencyModuleNames.Add("AssetTools");
+			PrivateDependencyModuleNames.Add("EditorStyle");
+
+		}
 			
 		
 		PrivateDependencyModuleNames.AddRange(

@@ -3,17 +3,10 @@
 
 #include "LDtkLevelRenderer.h"
 
-#include "EventManager.h"
 #include "LDtkMapAsset.h"
-#include "PaperTileMapComponent.h"
-#include "PaperTileMap.h"
 #include "Paper2D/Classes/PaperTileSet.h"
-#include "PaperTileLayer.h"
-#include "ViewportInteractionTypes.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "LDtkLoader/Level.hpp"
-#include "LDtkLoader/Tile.hpp"
 
 
 // Sets default values

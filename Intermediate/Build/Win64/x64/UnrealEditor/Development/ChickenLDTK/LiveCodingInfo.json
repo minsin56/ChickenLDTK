@@ -3,20 +3,15 @@
 	{
 		"Module.ChickenLDTK.cpp.obj": [
 			"ChickenLDTK.init.gen.cpp.obj",
-			"LDtkFactory.gen.cpp.obj",
 			"LDtkLevelRenderer.gen.cpp.obj",
 			"LDtkMapActor.gen.cpp.obj",
 			"LDtkMapAsset.gen.cpp.obj",
-			"LDtkReimportFactory.gen.cpp.obj",
 			"LDtkSpawnEntity.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
-			"AssetTypeActions_LDtkAsset.cpp.obj",
 			"ChickenLDTK.cpp.obj",
-			"LDtkFactory.cpp.obj",
 			"LDtkLevelRenderer.cpp.obj",
 			"LDtkMapActor.cpp.obj",
 			"LDtkMapAsset.cpp.obj",
-			"LDtkReimportFactory.cpp.obj",
 			"LDtkSpawnEntity.cpp.obj"
 		]
 	}

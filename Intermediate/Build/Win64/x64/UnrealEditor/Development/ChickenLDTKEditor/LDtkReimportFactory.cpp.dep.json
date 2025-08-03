@@ -1,0 +1,16 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtkeditor\\private\\ldtkreimportfactory.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\unreal projects\\cookinggame\\intermediate\\build\\win64\\x64\\cookinggameeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\chickenldtkeditor\\definitions.chickenldtkeditor.h",
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtkeditor\\private\\ldtkreimportfactory.h",
+            "e:\\epic\\ue_5.6\\engine\\source\\editor\\unrealed\\public\\editorreimporthandler.h",
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtkeditor\\uht\\ldtkreimportfactory.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -9,7 +9,6 @@
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "GameFramework/Actor.h"
 #include "ProceduralMeshComponent.h"
-#include "LDtkLoader/Layer.hpp"
 #include "LDtkLevelRenderer.generated.h"
 
 UCLASS(BlueprintType, Blueprintable)

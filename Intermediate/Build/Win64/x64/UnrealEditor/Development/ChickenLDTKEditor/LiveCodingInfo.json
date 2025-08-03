@@ -1,0 +1,17 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.ChickenLDTKEditor.cpp.obj": [
+			"ChickenLDTKEditor.init.gen.cpp.obj",
+			"LDtkDummyTestObject.gen.cpp.obj",
+			"LDtkFactory.gen.cpp.obj",
+			"LDtkReimportFactory.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"AssetTypeActions_LDtkAsset.cpp.obj",
+			"ChickenLDTKEditorModule.cpp.obj",
+			"LDtkDummyTestObject.cpp.obj",
+			"LDtkFactory.cpp.obj",
+			"LDtkReimportFactory.cpp.obj"
+		]
+	}
+}

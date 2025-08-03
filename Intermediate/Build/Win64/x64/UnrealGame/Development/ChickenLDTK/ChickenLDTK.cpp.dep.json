@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtk\\private\\chickenldtk.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\unreal projects\\cookinggame\\intermediate\\build\\win64\\x64\\cookinggame\\development\\engine\\sharedpch.engine.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\x64\\unrealgame\\development\\chickenldtk\\definitions.chickenldtk.h",
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtk\\public\\chickenldtk.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
