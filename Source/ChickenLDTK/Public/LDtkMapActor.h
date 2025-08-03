@@ -21,6 +21,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Map")
 	TArray<ULDtkMapAsset*> Maps;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Map")
+	TMap<FString,TSubclassOf<ALDtkSpawnEntity>> EntityLookup;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rendering")
 	UMaterialInterface* Material;
 

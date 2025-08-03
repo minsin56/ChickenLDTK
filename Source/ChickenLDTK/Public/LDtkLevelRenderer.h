@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "LDtkMapAsset.h"
+#include "LDtkSpawnEntity.h"
 #include "PaperTileSet.h"
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "GameFramework/Actor.h"
@@ -29,6 +30,9 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UMaterialInterface* Material;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TMap<FString,TSubclassOf<ALDtkSpawnEntity>> EntityLookup;
+
 	
 
 protected:
@@ -45,6 +49,7 @@ public:
 
 	void LoadAndGenMesh();
 	void GenTileLayer(FLDtkTileLayer LayerAsset);
+	void GenCollisionLayer();
 
 	UFUNCTION(BlueprintImplementableEvent, Category="LDTK")
 	void OnOverrideEntity(FLDtkEntity Entity);

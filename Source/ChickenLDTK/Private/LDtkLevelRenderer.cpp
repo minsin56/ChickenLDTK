@@ -3,12 +3,15 @@
 
 #include "LDtkLevelRenderer.h"
 
+#include "EventManager.h"
 #include "LDtkMapAsset.h"
 #include "PaperTileMapComponent.h"
 #include "PaperTileMap.h"
 #include "Paper2D/Classes/PaperTileSet.h"
 #include "PaperTileLayer.h"
 #include "ViewportInteractionTypes.h"
+#include "Components/BoxComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "LDtkLoader/Level.hpp"
 #include "LDtkLoader/Tile.hpp"
 
@@ -30,9 +33,27 @@ void ALDtkLevelRenderer::BeginPlay()
 
 	for (FLDtkEntity Element : MapAsset->Entities)
 	{
-		Element.Position.Y = -Element.Position.Y;
-		OnOverrideEntity(Element);
+		if (EntityLookup.Find(Element.Name))
+		{
+			TSubclassOf<ALDtkSpawnEntity> ActorClass = EntityLookup[Element.Name];
+
+			FTransform Transform;
+			Transform.SetLocation(FVector(Element.WorldPosition.X,0,-Element.WorldPosition.Y));
+			Transform.SetScale3D(FVector(1,1,1));
+
+
+			ALDtkSpawnEntity* Actor = GetWorld()->SpawnActor<ALDtkSpawnEntity>(ActorClass, Transform);
+			Actor->EntityRef = Element;
+			for (auto Field : Element.Fields)
+			{
+				Actor->SetFields(Field.Key,Field.Value);
+			}
+			UGameplayStatics::FinishSpawningActor(Actor, Transform);
+		
+		}
 	}
+
+	GenCollisionLayer();
 
 }
 // Called every frame
@@ -112,7 +133,7 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 		float U1 = (SrcX + TileSize) / AtlasWidth;
 		float V1 = (SrcY + TileSize) / AtlasHeight;
 
-		FVector BasePos = FVector(X,LayerIndex * 0.5f,-Y);
+		FVector BasePos = FVector(X,LayerIndex * 0.05f,-Y);
 
 
 		Vertices.Add(BasePos);
@@ -146,8 +167,43 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 	{
 		UMaterialInstanceDynamic* DynMat = UMaterialInstanceDynamic::Create(Material,this);
 		DynMat->SetTextureParameterValue("Texture", TileSet->GetTileSheetTexture());
+		if (TileSet->GetAdditionalTextures().Num() > 0)
+		{
+			auto Normal = TileSet->GetAdditionalTextures()[0];
+			DynMat->SetTextureParameterValue("Normal", Normal);
+
+		}
 		MeshComponent->SetMaterial(LayerIndex, DynMat);
 	}
 	
+}
+
+void ALDtkLevelRenderer::GenCollisionLayer()
+{
+	for (auto Layer : MapAsset->IntGridLayers)
+	{
+		if (Layer.LayerName == "Collision")
+		{
+			for (int x = 0; x < Layer.Width; x++)
+			{
+				for (int y = 0; y < Layer.Height; y++)
+				{
+					int Index = (y * Layer.Width) + x;
+
+					FLDtkIntGridValue Value = Layer.Values[Index];
+
+					if (Value.Value > 0)
+					{
+						UBoxComponent* Box = NewObject<UBoxComponent>(this);
+						Box->RegisterComponent();
+						Box->SetCollisionProfileName("BlockAll");
+						Box->AttachToComponent(RootComponent,FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+						Box->SetBoxExtent(FVector(Layer.TileSizeX / 2,16,Layer.TileSizeY / 2));
+						Box->SetWorldLocation(GetActorLocation() + FVector(Value.Position.X * Layer.TileSizeX,0,-Value.Position.Y * Layer.TileSizeY) + FVector(Layer.TileSizeX / 2,0, -Layer.TileSizeY / 2));
+					}
+				}
+			}
+		}
+	}
 }
 

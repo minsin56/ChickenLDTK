@@ -79,6 +79,8 @@
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtk\\uht\\ldtkfactory.generated.h",
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtk\\uht\\ldtklevelrenderer.gen.cpp",
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtk\\public\\ldtklevelrenderer.h",
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtk\\public\\ldtkspawnentity.h",
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtk\\uht\\ldtkspawnentity.generated.h",
             "e:\\epic\\ue_5.6\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\assetregistrymodule.h",
             "e:\\epic\\ue_5.6\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\iassetregistry.h",
             "e:\\epic\\ue_5.6\\engine\\source\\runtime\\coreuobject\\public\\misc\\assetregistryinterface.h",
@@ -93,6 +95,7 @@
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtk\\uht\\ldtkreimportfactory.gen.cpp",
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\source\\chickenldtk\\private\\ldtkreimportfactory.h",
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtk\\uht\\ldtkreimportfactory.generated.h",
+            "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\unrealeditor\\inc\\chickenldtk\\uht\\ldtkspawnentity.gen.cpp",
             "e:\\unreal projects\\cookinggame\\plugins\\chickenldtk\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\chickenldtk\\permoduleinline.gen.cpp",
             "e:\\epic\\ue_5.6\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
         ],

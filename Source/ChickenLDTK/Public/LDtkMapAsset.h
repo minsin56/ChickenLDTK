@@ -75,6 +75,17 @@ struct FLDtkTileLayer
 };
 
 USTRUCT(BlueprintType)
+struct FLDtkIntGridValue
+{
+	GENERATED_BODY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 Value;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FVector2D Position;
+};
+
+USTRUCT(BlueprintType)
 struct FLDtkIntGridLayer
 {
 	GENERATED_BODY()
@@ -83,7 +94,7 @@ struct FLDtkIntGridLayer
 	FString LayerName;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	TArray<int32> Values;
+	TArray<FLDtkIntGridValue> Values;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)

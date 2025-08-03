@@ -126,6 +126,7 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 				FLDtkEntity Ent;
 				Ent.Name = FString(Entity.getName().c_str());
 				Ent.Position = FVector2D(Entity.getPosition().x, Entity.getPosition().y);
+				Ent.WorldPosition = FVector2D(Entity.getWorldPosition().x,Entity.getWorldPosition().y);
 				Ent.Size = FVector2D(Entity.getSize().x, Entity.getSize().y);
 
 				for (const auto& Field: Entity.allFields())
@@ -240,9 +241,14 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 			{
 				for (int y = 0; y < IntGrid.Height; y++)
 				{
-					int Value = Layer.getIntGridVal(x,y).value;
+					auto IValue = Layer.getIntGridVal(x,y);
 
-					IntGrid.Values.Add(Value);
+					FLDtkIntGridValue FValue;
+					
+					FValue.Value = IValue.value;
+					FValue.Position = FVector2D(x,y);
+
+					IntGrid.Values.Add(FValue);
 				}
 			}
 

@@ -37,14 +37,14 @@ void ALDtkMapActor::GenerateMaps()
 		ALDtkLevelRenderer* Renderer;
 		if (RendererClass)
 		{
-			Renderer = Cast<ALDtkLevelRenderer>(UGameplayStatics::BeginDeferredActorSpawnFromClass(GetWorld(),RendererClass,FTransform()));
+			Renderer = Cast<ALDtkLevelRenderer>(UGameplayStatics::BeginDeferredActorSpawnFromClass(GetWorld(),RendererClass,Transform));
 		}
 		else
 		{
 			Renderer = Cast<ALDtkLevelRenderer>(UGameplayStatics::BeginDeferredActorSpawnFromClass(GetWorld(),ALDtkLevelRenderer::StaticClass(),FTransform()));
 		}
-		
 
+		Renderer->EntityLookup = EntityLookup;
 		Renderer->MapAsset = Map;
 		Renderer->Material = Material;
 		
@@ -70,4 +70,5 @@ void ALDtkMapActor::OnConstruction(const FTransform& Transform)
 		GenerateMaps();
 	}
 }
+
 

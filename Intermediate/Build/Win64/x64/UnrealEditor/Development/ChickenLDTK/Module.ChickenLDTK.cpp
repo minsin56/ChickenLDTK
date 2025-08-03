@@ -5,4 +5,5 @@
 #include "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkMapActor.gen.cpp"
 #include "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkMapAsset.gen.cpp"
 #include "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkReimportFactory.gen.cpp"
+#include "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTK/UHT/LDtkSpawnEntity.gen.cpp"
 #include "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/x64/UnrealEditor/Development/ChickenLDTK/PerModuleInline.gen.cpp"
