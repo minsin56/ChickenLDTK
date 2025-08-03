@@ -6,12 +6,14 @@
 			"LDtkFactory.gen.cpp.obj",
 			"LDtkLevelRenderer.gen.cpp.obj",
 			"LDtkMapAsset.gen.cpp.obj",
+			"LDtkReimportFactory.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
 			"AssetTypeActions_LDtkAsset.cpp.obj",
 			"ChickenLDTK.cpp.obj",
 			"LDtkFactory.cpp.obj",
 			"LDtkLevelRenderer.cpp.obj",
-			"LDtkMapAsset.cpp.obj"
+			"LDtkMapAsset.cpp.obj",
+			"LDtkReimportFactory.cpp.obj"
 		]
 	}
 }

@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class ULDtkReimportFactory *****************************************************
 CHICKENLDTK_API UClass* Z_Construct_UClass_ULDtkReimportFactory_NoRegister();
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesULDtkReimportFactory(); \
 	friend struct Z_Construct_UClass_ULDtkReimportFactory_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(ULDtkReimportFactory)
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ULDtkReimportFactory(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -42,12 +42,12 @@ public: \
 	NO_API virtual ~ULDtkReimportFactory();
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_13_PROLOG
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_GENERATED_BODY \
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_13_PROLOG
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -57,6 +57,6 @@ class ULDtkReimportFactory;
 // ********** End Class ULDtkReimportFactory *******************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h
+#define CURRENT_FILE_ID FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkReimportFactory_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

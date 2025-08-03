@@ -19,10 +19,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct FLDtkEntity;
 
 // ********** Begin Class ALDtkLevelRenderer *******************************************************
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_CALLBACK_WRAPPERS
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_CALLBACK_WRAPPERS
 CHICKENLDTK_API UClass* Z_Construct_UClass_ALDtkLevelRenderer_NoRegister();
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesALDtkLevelRenderer(); \
 	friend struct Z_Construct_UClass_ALDtkLevelRenderer_Statics; \
@@ -33,7 +33,7 @@ public: \
 	DECLARE_SERIALIZER(ALDtkLevelRenderer)
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ALDtkLevelRenderer(ALDtkLevelRenderer&&) = delete; \
 	ALDtkLevelRenderer(const ALDtkLevelRenderer&) = delete; \
@@ -43,13 +43,13 @@ public: \
 	NO_API virtual ~ALDtkLevelRenderer();
 
 
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_14_PROLOG
-#define FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_GENERATED_BODY \
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_14_PROLOG
+#define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_CALLBACK_WRAPPERS \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h_17_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_CALLBACK_WRAPPERS \
+	FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -59,6 +59,6 @@ class ALDtkLevelRenderer;
 // ********** End Class ALDtkLevelRenderer *********************************************************
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h
+#define CURRENT_FILE_ID FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

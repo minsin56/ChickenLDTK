@@ -41,7 +41,7 @@ struct Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "LDTK" },
-		{ "ModuleRelativePath", "Private/LDtkLevelRenderer.h" },
+		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Entity;
@@ -106,20 +106,20 @@ struct Z_Construct_UClass_ALDtkLevelRenderer_Statics
 		{ "BlueprintType", "true" },
 		{ "IncludePath", "LDtkLevelRenderer.h" },
 		{ "IsBlueprintBase", "true" },
-		{ "ModuleRelativePath", "Private/LDtkLevelRenderer.h" },
+		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MapAsset_MetaData[] = {
 		{ "Category", "LDtkLevelRenderer" },
-		{ "ModuleRelativePath", "Private/LDtkLevelRenderer.h" },
+		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MeshComponent_MetaData[] = {
 		{ "Category", "LDtkLevelRenderer" },
 		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Private/LDtkLevelRenderer.h" },
+		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Material_MetaData[] = {
 		{ "Category", "LDtkLevelRenderer" },
-		{ "ModuleRelativePath", "Private/LDtkLevelRenderer.h" },
+		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MapAsset;
@@ -128,7 +128,7 @@ struct Z_Construct_UClass_ALDtkLevelRenderer_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity, "OnOverrideEntity" }, // 3591689488
+		{ &Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity, "OnOverrideEntity" }, // 3692447092
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -178,14 +178,14 @@ ALDtkLevelRenderer::~ALDtkLevelRenderer() {}
 // ********** End Class ALDtkLevelRenderer *********************************************************
 
 // ********** Begin Registration *******************************************************************
-struct Z_CompiledInDeferFile_FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics
+struct Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ALDtkLevelRenderer, ALDtkLevelRenderer::StaticClass, TEXT("ALDtkLevelRenderer"), &Z_Registration_Info_UClass_ALDtkLevelRenderer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALDtkLevelRenderer), 3119477797U) },
+		{ Z_Construct_UClass_ALDtkLevelRenderer, ALDtkLevelRenderer::StaticClass, TEXT("ALDtkLevelRenderer"), &Z_Registration_Info_UClass_ALDtkLevelRenderer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALDtkLevelRenderer), 1627783664U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h__Script_ChickenLDTK_1932704209(TEXT("/Script/ChickenLDTK"),
-	Z_CompiledInDeferFile_FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_CozyCookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Private_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_68750366(TEXT("/Script/ChickenLDTK"),
+	Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // ********** End Registration *********************************************************************

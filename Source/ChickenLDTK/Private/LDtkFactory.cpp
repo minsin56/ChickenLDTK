@@ -12,6 +12,7 @@
 
 
 #include "LDtkLoader/Project.hpp"
+#include "UObject/SavePackage.h"
 TMap<FString,UPaperTileSet*>  ULDtkFactory::ImportedTileSets;
 
 ULDtkFactory* ULDtkFactory::Instance;
@@ -21,6 +22,7 @@ ULDtkFactory::ULDtkFactory()
 	bEditorImport = true;
 	bCreateNew = false;
 	bText = false;
+	ImportPriority = DefaultImportPriority;
 	SupportedClass = ULDtkMapAsset::StaticClass();
 	Formats.Add(TEXT("ldtk;LDtk Map File"));
 	Instance = this;
@@ -35,11 +37,45 @@ UObject* ULDtkFactory::FactoryCreateFile(UClass* InClass, UObject* InParent, FNa
 		UE_LOG(LogTemp,Error,TEXT("Failed To Load File"));
 		return nullptr;
 	}
-	ULDtkMapAsset* NewAsset = NewObject<ULDtkMapAsset>(InParent,InClass,InName,Flags);
-	
-	Import(NewAsset,FileContents,Filename);
+	ldtk::Project Proj;
+	Proj.loadFromMemory(reinterpret_cast<const unsigned char*>(TCHAR_TO_UTF8(*FileContents)),FileContents.GetAllocatedSize());
+	FString ParentPath = InParent->GetPathName();
+	FString PackagePath = FPackageName::GetLongPackagePath(ParentPath);
+	FString BasePackagePath = FPackageName::GetLongPackagePath(InParent->GetOutermost()->GetName());
 
-	return NewAsset;
+	int32 LevelIndex = 0;
+	int LevelCount = Proj.getWorld().allLevels().size();
+	for (int i = 0; i < LevelCount; i++)
+	{
+		FName LevelName(Proj.getWorld().allLevels()[i].name.c_str());
+		FString FullObjectName = PackagePath + "/" + LevelName.ToString();
+		const FString PackageName = BasePackagePath / LevelName.ToString();
+
+		UPackage* Pkg = CreatePackage(*PackageName);
+		Pkg->FullyLoad();
+		EObjectFlags FixedFlags = Flags | RF_Standalone;
+
+		ULDtkMapAsset* NewAsset = NewObject<ULDtkMapAsset>(Pkg,ULDtkMapAsset::StaticClass(),*LevelName.ToString(),FixedFlags);
+		Import(NewAsset,FileContents,Filename,&Proj,i);
+
+		
+		NewAsset->AssetImportData = NewObject<UAssetImportData>(NewAsset);
+		NewAsset->AssetImportData->Update(Filename);
+		
+		NewAsset->MarkPackageDirty();
+		Pkg->MarkPackageDirty();
+		FAssetRegistryModule::AssetCreated(NewAsset);
+		FSavePackageArgs SaveArgs;
+		SaveArgs.TopLevelFlags = Flags;
+		SaveArgs.SaveFlags = SAVE_None;
+		SaveArgs.Error = GError;
+		
+		FString PackageFileName = FPackageName::LongPackageNameToFilename(PackageName, FPackageName::GetAssetPackageExtension());
+		bool bSuccess = UPackage::SavePackage(Pkg, NewAsset, *PackageFileName,SaveArgs);
+		LevelIndex++;
+	}
+
+	return nullptr;
 }
 
 UTexture2D* ULDtkFactory::FindExistingTexture(const FString& AssetPath)
@@ -50,21 +86,18 @@ UTexture2D* ULDtkFactory::FindExistingTexture(const FString& AssetPath)
 	return Cast<UTexture2D>(StaticLoadObject(UTexture2D::StaticClass(), nullptr, *ObjectPath));
 }
 
-void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FString& Filename)
+void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FString& Filename, ldtk::Project* Proj, int32 LevelIndex)
 {
 
-
-
-	ldtk::Project Proj;
-	Proj.loadFromMemory(reinterpret_cast<const unsigned char*>(TCHAR_TO_UTF8(*Contents)),Contents.GetAllocatedSize());
-	const auto& Level = Proj.getWorld().allLevels()[0];
+	const auto& Level = Proj->getWorld().allLevels()[LevelIndex];
 
 	NewAsset->LevelName = FString(Level.name.c_str());
-	NewAsset->AssetImportData->UpdateFilenameOnly(Filename);
+	NewAsset->LevelIndex = LevelIndex;
+	NewAsset->Position = FVector2D(Level.position.x, Level.position.y);
 
 
 
-	for (const auto& TileSet : Proj.allTilesets())
+	for (const auto& TileSet : Proj->allTilesets())
 	{
 		FString RelPath = FString(TileSet.path.c_str());
 		FString AbsPath = FPaths::ConvertRelativePathToFull(FPaths::GetPath(Filename),RelPath);
@@ -169,18 +202,21 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 		}
 
 
-		if (Layer.getType() == ldtk::LayerType::Tiles)
+		if (!Layer.allTiles().empty())
 		{
 			FLDtkTileLayer TileLayer;
 			TileLayer.LayerName = FString(Layer.getName().c_str());
 			TileLayer.TileSetID = Layer.getTileset().path.c_str();
 			TileLayer.IID = FText::FromString(Layer.iid.str().c_str());
+			TileLayer.TileSizeX = Layer.getCellSize();
+			TileLayer.TileSizeY = Layer.getCellSize();
 			for (const auto& Tile: Layer.allTiles())
 			{
 				FLDtkTile LTile;
 				LTile.TileID = Tile.coordId;
 				LTile.Position = FVector2D(Tile.getPosition().x,Tile.getPosition().y);
 				LTile.TileSetPath = Layer.getTileset().name.c_str();
+				
 				LTile.TileSourcePos = FVector2D(Tile.getTextureRect().x,Tile.getTextureRect().y);
 				
 				TileLayer.Tiles.Add(LTile);
@@ -188,12 +224,47 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 			
 			NewAsset->TileLayers.Add(TileLayer);
 		}
+		if (Layer.getType() == ldtk::LayerType::IntGrid)
+		{
+			
+
+			FLDtkIntGridLayer IntGrid;
+			IntGrid.LayerName = FString(Layer.getName().c_str());
+			IntGrid.IID =FText::FromString(Layer.iid.str().c_str());
+			IntGrid.Width = Layer.getGridSize().x;
+			IntGrid.Height = Layer.getGridSize().y;
+			IntGrid.TileSizeX = Layer.getCellSize();
+			IntGrid.TileSizeY = Layer.getCellSize();
+
+			for (int x = 0; x < IntGrid.Width; x++)
+			{
+				for (int y = 0; y < IntGrid.Height; y++)
+				{
+					int Value = Layer.getIntGridVal(x,y).value;
+
+					IntGrid.Values.Add(Value);
+				}
+			}
+
+			NewAsset->IntGridLayers.Add(IntGrid);
+		}
 	}
+
+
+	// not sure if needed, but it reverses the layer order, will keep just in case
+	/*
+	auto ReversedTileLayers = NewAsset->TileLayers;
+	std::reverse(ReversedTileLayers.begin(), ReversedTileLayers.end());
+	NewAsset->TileLayers = ReversedTileLayers;
+
+	auto ReversedIntGridLayers = NewAsset->IntGridLayers;
+	std::reverse(ReversedTileLayers.begin(), ReversedTileLayers.end());
+	NewAsset->IntGridLayers = ReversedIntGridLayers;
+	*/
+	
+	
 	NewAsset->LevelWidth = Level.size.x;
 	NewAsset->LevelHeight = Level.size.y;
-
-	NewAsset->TileSizeX = 16;
-	NewAsset->TileSizeY = 16;
 }
 
 
@@ -321,7 +392,7 @@ void ULDtkFactory::SetReimportPaths(UObject* Obj, const TArray<FString>& NewReim
 EReimportResult::Type ULDtkFactory::Reimport(UObject* Obj)
 {
 	ULDtkMapAsset* Asset = Cast<ULDtkMapAsset>(Obj);
-	if (!Asset) return EReimportResult::Failed;
+	if (!Asset || !Asset->AssetImportData) return EReimportResult::Failed;
 
 	const FString Filename = Asset->AssetImportData->GetFirstFilename();
 	FString FileContents;
@@ -333,7 +404,11 @@ EReimportResult::Type ULDtkFactory::Reimport(UObject* Obj)
 
 	Asset->Entities.Empty();
 	Asset->TileLayers.Empty();
-	Import(Asset,FileContents,Filename);
+	Asset->IntGridLayers.Empty();
+	
+	ldtk::Project Proj;
+	Proj.loadFromMemory(reinterpret_cast<const unsigned char*>(TCHAR_TO_UTF8(*FileContents)),FileContents.GetAllocatedSize());
+	Import(Asset,FileContents,Filename,&Proj,Asset->LevelIndex);
 	Asset->MarkPackageDirty();
 	return EReimportResult::Succeeded;
 }

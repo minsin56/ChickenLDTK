@@ -45,7 +45,7 @@ public:
 
 	virtual bool FactoryCanImport(const FString& Filename) override;
 
-	void Import(ULDtkMapAsset* NewAsset, FString& Contents,const FString& Filename);
+	void Import(ULDtkMapAsset* NewAsset, FString& Contents,const FString& Filename, ldtk::Project* Proj, int32 LevelIndex = 0);
 
 	// Reimport
 	virtual bool CanReimport(UObject* Obj, TArray<FString>& OutFilenames) override;

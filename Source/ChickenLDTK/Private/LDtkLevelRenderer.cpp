@@ -46,7 +46,14 @@ void ALDtkLevelRenderer::OnConstruction(const FTransform& Transform)
 	//Super::OnConstruction(Transform);
 
 	if (MapAsset)
+	{
+		if (MeshComponent->GetNumSections() > 0)
+		{
+			MeshComponent->ClearAllMeshSections();
+		}
 		LoadAndGenMesh();
+	}
+
 }
 
 void ALDtkLevelRenderer::LoadAndGenMesh()
@@ -77,20 +84,26 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 	FString AssetName = FPaths::GetBaseFilename(SourceImage) + TEXT("_TileSet");
 	UPaperTileSet* TileSet = FindTileSetByName(AssetName);
 
+	if (TileSet)
+	{
+		TileSet->GetTileSheetTexture()->ConditionalPostLoad();
+		TileSet->GetTileSheetTexture()->UpdateResource();
+	}
+
 	int32 VertexIndex = 0;
 
 	int32 AtlasWidth = TileSet->GetTileSheetTexture()->GetSizeX();
 	int32 AtlasHeight = TileSet->GetTileSheetTexture()->GetSizeY();
-	int32 TilesPerRow = AtlasWidth / TileSet->GetTileSize().X;
-	int32 TileSize = TileSet->GetTileSize().X;
+	int32 TileSize = LayerAsset.TileSizeX;
 
 	for (auto Tile : LayerAsset.Tiles)
 	{
 		int32 TileID = Tile.TileID;
 
+		int GridSize = LayerAsset.TileSizeX;
+		
 		int32 X = Tile.Position.X;
 		int32 Y = Tile.Position.Y;
-
 		float SrcX = Tile.TileSourcePos.X;
 		float SrcY = Tile.TileSourcePos.Y;
 

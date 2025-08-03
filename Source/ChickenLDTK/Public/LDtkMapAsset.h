@@ -60,6 +60,12 @@ struct FLDtkTileLayer
 	FString LayerName;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString TileSetID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int TileSizeX;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int TileSizeY;
+
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FLDtkTile> Tiles;
@@ -67,6 +73,32 @@ struct FLDtkTileLayer
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FText IID;
 };
+
+USTRUCT(BlueprintType)
+struct FLDtkIntGridLayer
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString LayerName;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<int32> Values;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 Width;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 Height;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 TileSizeX;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 TileSizeY;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FText IID;
+};
+
 
 UCLASS(BlueprintType)
 class CHICKENLDTK_API ULDtkMapAsset : public UObject
@@ -76,11 +108,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString LevelName;
 
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	FVector2D Position;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FLDtkEntity> Entities;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FLDtkTileLayer> TileLayers;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<FLDtkIntGridLayer> IntGridLayers;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 LevelIndex;
 
 	UPROPERTY(VisibleAnywhere, Instanced, Category = Import)
 	TObjectPtr<UAssetImportData> AssetImportData;
@@ -99,8 +140,4 @@ public:
 	int LevelWidth;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int LevelHeight;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	int TileSizeX;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	int TileSizeY;
 };
