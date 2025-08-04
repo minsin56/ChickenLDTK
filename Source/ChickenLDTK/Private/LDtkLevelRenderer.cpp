@@ -14,6 +14,8 @@ ALDtkLevelRenderer::ALDtkLevelRenderer()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	auto URootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	SetRootComponent(URootComponent);
 	MeshComponent = CreateDefaultSubobject<UProceduralMeshComponent>("MeshComponent");
 	MeshComponent->SetupAttachment(RootComponent);
 	MeshComponent->bUseAsyncCooking = true;
@@ -23,6 +25,15 @@ ALDtkLevelRenderer::ALDtkLevelRenderer()
 void ALDtkLevelRenderer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (MapAsset)
+	{
+		if (MeshComponent->GetNumSections() > 0)
+		{
+			MeshComponent->ClearAllMeshSections();
+		}
+		LoadAndGenMesh();
+	}
 
 	for (FLDtkEntity Element : MapAsset->Entities)
 	{
@@ -58,7 +69,7 @@ void ALDtkLevelRenderer::Tick(float DeltaTime)
 void ALDtkLevelRenderer::OnConstruction(const FTransform& Transform)
 {
 	//Super::OnConstruction(Transform);
-
+#if UE_EDITOR
 	if (MapAsset)
 	{
 		if (MeshComponent->GetNumSections() > 0)
@@ -67,7 +78,7 @@ void ALDtkLevelRenderer::OnConstruction(const FTransform& Transform)
 		}
 		LoadAndGenMesh();
 	}
-
+#endif
 }
 
 void ALDtkLevelRenderer::LoadAndGenMesh()
@@ -102,6 +113,11 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 	{
 		TileSet->GetTileSheetTexture()->ConditionalPostLoad();
 		TileSet->GetTileSheetTexture()->UpdateResource();
+	}
+
+	if (!TileSet)
+	{
+		return;
 	}
 
 	int32 VertexIndex = 0;
