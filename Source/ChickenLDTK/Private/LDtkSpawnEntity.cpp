@@ -16,6 +16,11 @@ void ALDtkSpawnEntity::SetFields_Implementation(const FString& Key, const FStrin
 	
 }
 
+void ALDtkSpawnEntity::InitEntity_Implementation()
+{
+	
+}
+
 // Called when the game starts or when spawned
 void ALDtkSpawnEntity::BeginPlay()
 {

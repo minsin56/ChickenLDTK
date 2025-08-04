@@ -18,8 +18,13 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	FLDtkEntity EntityRef;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	FString IID;
+	
 	UFUNCTION(BlueprintNativeEvent, Category="LDTK")
 	void SetFields(const FString& Key, const FString& Value);
+	UFUNCTION(BlueprintNativeEvent, Category="LDTK")
+	void InitEntity();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

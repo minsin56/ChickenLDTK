@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "LDtkEntityReplacementDef.h"
 #include "LDtkMapAsset.h"
 #include "LDtkSpawnEntity.h"
 #include "PaperTileSet.h"
@@ -30,8 +31,10 @@ public:
 	UMaterialInterface* Material;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	TMap<FString,TSubclassOf<ALDtkSpawnEntity>> EntityLookup;
-
+	ULDtkEntityReplacementDef* EntityLookup;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Map")
+	TMap<FString, float> LayerHeightLookup;
 	
 
 protected:

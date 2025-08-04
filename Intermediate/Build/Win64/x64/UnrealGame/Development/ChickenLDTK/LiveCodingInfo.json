@@ -2,11 +2,13 @@
 	"RemapUnityFiles": 
 	{
 		"Module.ChickenLDTK.cpp.obj": [
+			"BPFuncsLDtk.gen.cpp.obj",
 			"ChickenLDTK.init.gen.cpp.obj",
 			"LDtkLevelRenderer.gen.cpp.obj",
 			"LDtkMapActor.gen.cpp.obj",
 			"LDtkMapAsset.gen.cpp.obj",
 			"LDtkSpawnEntity.gen.cpp.obj",
+			"BPFuncsLDtk.cpp.obj",
 			"ChickenLDTK.cpp.obj",
 			"LDtkLevelRenderer.cpp.obj",
 			"LDtkMapActor.cpp.obj",

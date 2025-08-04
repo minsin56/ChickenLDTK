@@ -65,6 +65,10 @@ struct Z_Construct_UScriptStruct_FLDtkEntity_Statics
 		{ "Category", "LDtkEntity" },
 		{ "ModuleRelativePath", "Public/LDtkMapAsset.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IID_MetaData[] = {
+		{ "Category", "LDtkEntity" },
+		{ "ModuleRelativePath", "Public/LDtkMapAsset.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_Name;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Position;
@@ -73,6 +77,7 @@ struct Z_Construct_UScriptStruct_FLDtkEntity_Statics
 	static const UECodeGen_Private::FStrPropertyParams NewProp_Fields_ValueProp;
 	static const UECodeGen_Private::FStrPropertyParams NewProp_Fields_Key_KeyProp;
 	static const UECodeGen_Private::FMapPropertyParams NewProp_Fields;
+	static const UECodeGen_Private::FStrPropertyParams NewProp_IID;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
@@ -87,6 +92,7 @@ const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FLDtkEn
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Fields_ValueProp = { "Fields", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Fields_Key_KeyProp = { "Fields_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Fields = { "Fields", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLDtkEntity, Fields), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Fields_MetaData), NewProp_Fields_MetaData) };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_IID = { "IID", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLDtkEntity, IID), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IID_MetaData), NewProp_IID_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FLDtkEntity_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Name,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Position,
@@ -95,6 +101,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FL
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Fields_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Fields_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_Fields,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewProp_IID,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FLDtkEntity_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FLDtkEntity_Statics::StructParams = {
@@ -563,8 +570,8 @@ struct Z_Construct_UClass_ULDtkMapAsset_Statics
 };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_LevelName = { "LevelName", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULDtkMapAsset, LevelName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LevelName_MetaData), NewProp_LevelName_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_Position = { "Position", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULDtkMapAsset, Position), Z_Construct_UScriptStruct_FVector2D, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Position_MetaData), NewProp_Position_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_Entities_Inner = { "Entities", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FLDtkEntity, METADATA_PARAMS(0, nullptr) }; // 656700124
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_Entities = { "Entities", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULDtkMapAsset, Entities), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Entities_MetaData), NewProp_Entities_MetaData) }; // 656700124
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_Entities_Inner = { "Entities", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FLDtkEntity, METADATA_PARAMS(0, nullptr) }; // 3070829396
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_Entities = { "Entities", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULDtkMapAsset, Entities), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Entities_MetaData), NewProp_Entities_MetaData) }; // 3070829396
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_TileLayers_Inner = { "TileLayers", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FLDtkTileLayer, METADATA_PARAMS(0, nullptr) }; // 4167884226
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_TileLayers = { "TileLayers", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULDtkMapAsset, TileLayers), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TileLayers_MetaData), NewProp_TileLayers_MetaData) }; // 4167884226
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULDtkMapAsset_Statics::NewProp_IntGridLayers_Inner = { "IntGridLayers", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FLDtkIntGridLayer, METADATA_PARAMS(0, nullptr) }; // 3787058400
@@ -625,17 +632,17 @@ ULDtkMapAsset::~ULDtkMapAsset() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FLDtkEntity::StaticStruct, Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewStructOps, TEXT("LDtkEntity"), &Z_Registration_Info_UScriptStruct_FLDtkEntity, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLDtkEntity), 656700124U) },
+		{ FLDtkEntity::StaticStruct, Z_Construct_UScriptStruct_FLDtkEntity_Statics::NewStructOps, TEXT("LDtkEntity"), &Z_Registration_Info_UScriptStruct_FLDtkEntity, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLDtkEntity), 3070829396U) },
 		{ FLDtkTile::StaticStruct, Z_Construct_UScriptStruct_FLDtkTile_Statics::NewStructOps, TEXT("LDtkTile"), &Z_Registration_Info_UScriptStruct_FLDtkTile, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLDtkTile), 1626646819U) },
 		{ FLDtkTileLayer::StaticStruct, Z_Construct_UScriptStruct_FLDtkTileLayer_Statics::NewStructOps, TEXT("LDtkTileLayer"), &Z_Registration_Info_UScriptStruct_FLDtkTileLayer, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLDtkTileLayer), 4167884226U) },
 		{ FLDtkIntGridValue::StaticStruct, Z_Construct_UScriptStruct_FLDtkIntGridValue_Statics::NewStructOps, TEXT("LDtkIntGridValue"), &Z_Registration_Info_UScriptStruct_FLDtkIntGridValue, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLDtkIntGridValue), 4265083498U) },
 		{ FLDtkIntGridLayer::StaticStruct, Z_Construct_UScriptStruct_FLDtkIntGridLayer_Statics::NewStructOps, TEXT("LDtkIntGridLayer"), &Z_Registration_Info_UScriptStruct_FLDtkIntGridLayer, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLDtkIntGridLayer), 3787058400U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ULDtkMapAsset, ULDtkMapAsset::StaticClass, TEXT("ULDtkMapAsset"), &Z_Registration_Info_UClass_ULDtkMapAsset, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULDtkMapAsset), 690087629U) },
+		{ Z_Construct_UClass_ULDtkMapAsset, ULDtkMapAsset::StaticClass, TEXT("ULDtkMapAsset"), &Z_Registration_Info_UClass_ULDtkMapAsset, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULDtkMapAsset), 750447033U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_2579865775(TEXT("/Script/ChickenLDTK"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_3641642655(TEXT("/Script/ChickenLDTK"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkMapAsset_h__Script_ChickenLDTK_Statics::ScriptStructInfo),
 	nullptr, 0);

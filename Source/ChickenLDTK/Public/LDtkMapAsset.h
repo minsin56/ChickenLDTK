@@ -30,6 +30,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<FString,FString> Fields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString IID;
 };
 
 USTRUCT(BlueprintType)

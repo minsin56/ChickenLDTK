@@ -129,12 +129,13 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 				Ent.Position = FVector2D(Entity.getPosition().x, Entity.getPosition().y);
 				Ent.WorldPosition = FVector2D(Entity.getWorldPosition().x,Entity.getWorldPosition().y);
 				Ent.Size = FVector2D(Entity.getSize().x, Entity.getSize().y);
-
+				Ent.IID = FString(Entity.iid.str().c_str());
 				for (const auto& Field: Entity.allFields())
 				{
 					auto Name = ANSI_TO_TCHAR(Field.name.c_str());
 					switch (Field.type)
 					{
+#pragma region Singles
 					case ldtk::FieldType::Int:
 						{
 							int Val = Entity.getField<ldtk::FieldType::Int>(Field.name.c_str()).value_or(0);
@@ -159,7 +160,9 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 						}
 					case ldtk::FieldType::String:
 						{
+							auto Val = Entity.getField<ldtk::FieldType::String>(Field.name.c_str()).value_or("");
 
+							Ent.Fields.Add({FString(Name),FString(Val.c_str())});
 							break;
 						}
 					case ldtk::FieldType::Color:
@@ -173,7 +176,20 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 					case ldtk::FieldType::Tile:
 						break;
 					case ldtk::FieldType::EntityRef:
-						break;
+						{
+;							auto Val = Entity.getField<ldtk::FieldType::EntityRef>(Field.name.c_str());
+
+							if (!Val.is_null())
+							{
+								auto Ref = Val.value_or(ldtk::EntityRef(Entity.iid,Entity.iid,Entity.iid,Entity.iid));
+								Ent.Fields.Add({FString(Name),FString(Ref.entity_iid.str().c_str())});
+							}
+							break;
+
+						}
+
+#pragma endregion
+#pragma region Arrays
 					case ldtk::FieldType::ArrayInt:
 						break;
 					case ldtk::FieldType::ArrayFloat:
@@ -194,8 +210,8 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 						break;
 					case ldtk::FieldType::ArrayEntityRef:
 						break;
+#pragma endregion
 					}
-					
 				}
 
 

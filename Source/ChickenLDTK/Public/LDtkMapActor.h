@@ -22,7 +22,10 @@ public:
 	TArray<ULDtkMapAsset*> Maps;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Map")
-	TMap<FString,TSubclassOf<ALDtkSpawnEntity>> EntityLookup;
+	ULDtkEntityReplacementDef* EntityLookup;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Map")
+	TMap<FString, float> LayerHeightLookup;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rendering")
 	UMaterialInterface* Material;

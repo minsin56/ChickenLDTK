@@ -18,7 +18,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class ALDtkSpawnEntity *********************************************************
 #define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkSpawnEntity_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void InitEntity_Implementation(); \
 	virtual void SetFields_Implementation(const FString& Key, const FString& Value); \
+	DECLARE_FUNCTION(execInitEntity); \
 	DECLARE_FUNCTION(execSetFields);
 
 

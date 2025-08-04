@@ -288,7 +288,6 @@
 /I "../Plugins/Runtime/ProceduralMeshComponent/Source"
 /I "../Plugins/Runtime/ProceduralMeshComponent/Source/ProceduralMeshComponent/Public"
 /I "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Intermediate/Build/Win64/UnrealEditor/Inc/ChickenLDTKEditor/UHT"
-/I "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Source/ChickenLDTKEditor/ThirdParty/include"
 /I "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Source"
 /I "E:/Unreal Projects/CookingGame/Plugins/ChickenLDTK/Source/ChickenLDTKEditor/Public"
 /I "../Plugins/2D/Paper2D/Intermediate/Build/Win64/UnrealEditor/Inc/Paper2D/UHT"

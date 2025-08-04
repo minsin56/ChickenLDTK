@@ -99,7 +99,6 @@ namespace ldtk {
 
         operator const Field<T>&() const
         {
-            throw std::runtime_error("Cannot convert ldtk::ArrayField<T> to ldtk::Field<T>");
             return this->at(0);
         }
     };

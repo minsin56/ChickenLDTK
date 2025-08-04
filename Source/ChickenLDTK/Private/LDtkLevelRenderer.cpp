@@ -37,9 +37,9 @@ void ALDtkLevelRenderer::BeginPlay()
 
 	for (FLDtkEntity Element : MapAsset->Entities)
 	{
-		if (EntityLookup.Find(Element.Name))
+		if (EntityLookup->EntityLookup.Find(Element.Name))
 		{
-			TSubclassOf<ALDtkSpawnEntity> ActorClass = EntityLookup[Element.Name];
+			TSubclassOf<ALDtkSpawnEntity> ActorClass = EntityLookup->EntityLookup[Element.Name];
 
 			FTransform Transform;
 			Transform.SetLocation(FVector(Element.WorldPosition.X,0,-Element.WorldPosition.Y));
@@ -48,12 +48,13 @@ void ALDtkLevelRenderer::BeginPlay()
 
 			ALDtkSpawnEntity* Actor = GetWorld()->SpawnActor<ALDtkSpawnEntity>(ActorClass, Transform);
 			Actor->EntityRef = Element;
+			Actor->IID = Element.IID;
 			for (auto Field : Element.Fields)
 			{
 				Actor->SetFields(Field.Key,Field.Value);
 			}
 			UGameplayStatics::FinishSpawningActor(Actor, Transform);
-		
+			Actor->InitEntity();
 		}
 	}
 
@@ -109,6 +110,13 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 	FString AssetName = FPaths::GetBaseFilename(SourceImage) + TEXT("_TileSet");
 	UPaperTileSet* TileSet = FindTileSetByName(AssetName);
 
+	float YOffset = 0;
+
+	if (LayerHeightLookup.Contains(LayerAsset.LayerName))
+	{
+		YOffset = LayerHeightLookup[LayerAsset.LayerName];
+	}
+
 	if (TileSet)
 	{
 		TileSet->GetTileSheetTexture()->ConditionalPostLoad();
@@ -142,7 +150,7 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 		float U1 = (SrcX + TileSize) / AtlasWidth;
 		float V1 = (SrcY + TileSize) / AtlasHeight;
 
-		FVector BasePos = FVector(X,LayerIndex * 0.05f,-Y);
+		FVector BasePos = FVector(X,LayerIndex * 0.05f + YOffset,-Y);
 
 
 		Vertices.Add(BasePos);

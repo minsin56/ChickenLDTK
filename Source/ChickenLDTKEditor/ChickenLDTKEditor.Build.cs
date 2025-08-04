@@ -15,8 +15,8 @@ public class ChickenLDTKEditor : ModuleRules
 			}
 			);
 		
-		PublicIncludePaths.Add(Path.Combine(ModuleDirectory,"ThirdParty","include"));
-		PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory,"ThirdParty","lib","LDtkLoader.lib"));
+		/*PublicIncludePaths.Add(Path.Combine(ModuleDirectory,"ThirdParty","include"));
+		PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory,"ThirdParty","lib","LDtkLoader.lib"));*/
 
 
 

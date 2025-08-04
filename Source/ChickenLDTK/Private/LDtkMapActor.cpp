@@ -47,6 +47,7 @@ void ALDtkMapActor::GenerateMaps()
 		Renderer->EntityLookup = EntityLookup;
 		Renderer->MapAsset = Map;
 		Renderer->Material = Material;
+		Renderer->LayerHeightLookup = LayerHeightLookup;
 		
 		Renderers.Add(Renderer);
 
