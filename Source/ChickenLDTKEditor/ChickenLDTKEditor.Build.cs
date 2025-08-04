@@ -67,6 +67,7 @@ public class ChickenLDTKEditor : ModuleRules
 			}
 			);
 		
-
+		bEnableUndefinedIdentifierWarnings = false; // Optional cleanup
+		PublicDefinitions.Add("DISABLE_C4702");
 	}
 }

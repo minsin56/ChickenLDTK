@@ -571,7 +571,7 @@ struct is_nothrow_move_assignable
             }
 
             T& value() {
-                return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
+                return contained_val();
             }
 
 # endif

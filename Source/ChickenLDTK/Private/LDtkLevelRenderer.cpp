@@ -49,12 +49,9 @@ void ALDtkLevelRenderer::BeginPlay()
 			ALDtkSpawnEntity* Actor = GetWorld()->SpawnActor<ALDtkSpawnEntity>(ActorClass, Transform);
 			Actor->EntityRef = Element;
 			Actor->IID = Element.IID;
-			for (auto Field : Element.Fields)
-			{
-				Actor->SetFields(Field.Key,Field.Value);
-			}
-			UGameplayStatics::FinishSpawningActor(Actor, Transform);
 			Actor->InitEntity();
+
+			UGameplayStatics::FinishSpawningActor(Actor, Transform);
 		}
 	}
 
@@ -149,6 +146,7 @@ void ALDtkLevelRenderer::GenTileLayer(FLDtkTileLayer LayerAsset)
 		float V0 = (SrcY) / AtlasHeight;
 		float U1 = (SrcX + TileSize) / AtlasWidth;
 		float V1 = (SrcY + TileSize) / AtlasHeight;
+
 
 		FVector BasePos = FVector(X,LayerIndex * 0.05f + YOffset,-Y);
 

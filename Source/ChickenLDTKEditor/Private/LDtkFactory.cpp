@@ -139,7 +139,7 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 					case ldtk::FieldType::Int:
 						{
 							int Val = Entity.getField<ldtk::FieldType::Int>(Field.name.c_str()).value_or(0);
-							Ent.Fields.Add({FString(Name), FString(std::to_string(Val).c_str())});
+							Ent.IntFields.Add(FString(Name),Val);
 
 							break;
 						}
@@ -147,14 +147,14 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 					case ldtk::FieldType::Float:
 						{
 							float Val = Entity.getField<ldtk::FieldType::Float>(Field.name.c_str()).value_or(0.0f);
-							Ent.Fields.Add({FString(Name), FString(std::to_string(Val).c_str())});
+							Ent.FloatFields.Add(FString(Name),Val);
 
 							break;
 						}
 					case ldtk::FieldType::Bool:
 						{
 							bool Val = Entity.getField<ldtk::FieldType::Bool>(Field.name.c_str()).value_or(false);
-							Ent.Fields.Add({FString(Name), FString(std::to_string(Val).c_str())});
+							Ent.BoolFields.Add(FString(Name),Val);
 
 							break;
 						}
@@ -162,15 +162,27 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 						{
 							auto Val = Entity.getField<ldtk::FieldType::String>(Field.name.c_str()).value_or("");
 
-							Ent.Fields.Add({FString(Name),FString(Val.c_str())});
+							Ent.StringFields.Add(FString(Name),FString(Val.c_str()));
 							break;
 						}
 					case ldtk::FieldType::Color:
 						break;
 					case ldtk::FieldType::Point:
+						{
+							auto Val = Entity.getField<ldtk::FieldType::Point>(Field.name.c_str()).value_or(ldtk::IntPoint(0,0));
+							Ent.PointFields.Add(FString(Name),FVector2D(Val.x,Val.y));
+							break;
+						}
 						break;
 					case ldtk::FieldType::Enum:
 						{
+							auto Val = Entity.getField<ldtk::FieldType::Enum>(Field.name.c_str());
+
+							if (!Val.is_null())
+							{
+								Ent.EnumFields.Add(FString(Name),FString(Val.value().name.c_str()));
+							}
+
 							break;
 						}
 					case ldtk::FieldType::Tile:
@@ -182,7 +194,7 @@ void ULDtkFactory::Import(ULDtkMapAsset* NewAsset, FString& Contents,const FStri
 							if (!Val.is_null())
 							{
 								auto Ref = Val.value_or(ldtk::EntityRef(Entity.iid,Entity.iid,Entity.iid,Entity.iid));
-								Ent.Fields.Add({FString(Name),FString(Ref.entity_iid.str().c_str())});
+								Ent.EntityRefFields.Add(FString(Name),FString(Ref.entity_iid.str().c_str()));
 							}
 							break;
 

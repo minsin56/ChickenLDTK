@@ -49,7 +49,7 @@ struct Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::NewProp_Entity = { "Entity", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(LDtkLevelRenderer_eventOnOverrideEntity_Parms, Entity), Z_Construct_UScriptStruct_FLDtkEntity, METADATA_PARAMS(0, nullptr) }; // 3070829396
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::NewProp_Entity = { "Entity", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(LDtkLevelRenderer_eventOnOverrideEntity_Parms, Entity), Z_Construct_UScriptStruct_FLDtkEntity, METADATA_PARAMS(0, nullptr) }; // 686704704
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::NewProp_Entity,
 };
@@ -141,7 +141,7 @@ struct Z_Construct_UClass_ALDtkLevelRenderer_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity, "OnOverrideEntity" }, // 2524170436
+		{ &Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity, "OnOverrideEntity" }, // 2580136732
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -202,10 +202,10 @@ ALDtkLevelRenderer::~ALDtkLevelRenderer() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ALDtkLevelRenderer, ALDtkLevelRenderer::StaticClass, TEXT("ALDtkLevelRenderer"), &Z_Registration_Info_UClass_ALDtkLevelRenderer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALDtkLevelRenderer), 1251251391U) },
+		{ Z_Construct_UClass_ALDtkLevelRenderer, ALDtkLevelRenderer::StaticClass, TEXT("ALDtkLevelRenderer"), &Z_Registration_Info_UClass_ALDtkLevelRenderer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALDtkLevelRenderer), 2682884237U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_1163629938(TEXT("/Script/ChickenLDTK"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_204165994(TEXT("/Script/ChickenLDTK"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

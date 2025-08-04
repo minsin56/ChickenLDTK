@@ -17,19 +17,42 @@ struct FLDtkEntity
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString Name;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FVector2D Position;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FVector2D WorldPosition;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FVector2D Size;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TMap<FString,FString> Fields;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString,int> IntFields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString,float> FloatFields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString, bool> BoolFields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString,FString> StringFields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString, FString> EntityRefFields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString, FString> EnumFields;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TMap<FString,FVector2D> PointFields;
+
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString IID;

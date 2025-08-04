@@ -15,6 +15,7 @@
 #define UE_ENABLE_INCLUDE_ORDER_DEPRECATED_IN_5_6 0
 #define UE_PROJECT_NAME CookingGame
 #define UE_TARGET_NAME CookingGameEditor
+#define DISABLE_C4702 1
 #define UE_MODULE_NAME "ChickenLDTKEditor"
 #define UE_PLUGIN_NAME "ChickenLDTK"
 #define IMPLEMENT_ENCRYPTION_KEY_REGISTRATION() 

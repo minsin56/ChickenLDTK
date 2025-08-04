@@ -33,5 +33,25 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	FVector2D GetPointField(FString Name);
+
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	int GetIntField(FString Name);
+
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	float GetFloatField(FString Name);
+
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	FString GetEnumField(FString Name);
+
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	FString GetEntityRefField(FString Name);
+
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	bool GetBoolField(FString Name);
+
 	
+	UFUNCTION(BlueprintCallable, Category="LDTK")
+	FString GetStringField(FString Name);
 };

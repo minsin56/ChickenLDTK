@@ -20,6 +20,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkSpawnEntity_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void InitEntity_Implementation(); \
 	virtual void SetFields_Implementation(const FString& Key, const FString& Value); \
+	DECLARE_FUNCTION(execGetStringField); \
+	DECLARE_FUNCTION(execGetBoolField); \
+	DECLARE_FUNCTION(execGetEntityRefField); \
+	DECLARE_FUNCTION(execGetEnumField); \
+	DECLARE_FUNCTION(execGetFloatField); \
+	DECLARE_FUNCTION(execGetIntField); \
+	DECLARE_FUNCTION(execGetPointField); \
 	DECLARE_FUNCTION(execInitEntity); \
 	DECLARE_FUNCTION(execSetFields);
 

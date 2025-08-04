@@ -15,10 +15,9 @@ void EmptyLinkFunctionForGeneratedCodeLDtkLevelRenderer() {}
 // ********** Begin Cross Module References ********************************************************
 CHICKENLDTK_API UClass* Z_Construct_UClass_ALDtkLevelRenderer();
 CHICKENLDTK_API UClass* Z_Construct_UClass_ALDtkLevelRenderer_NoRegister();
-CHICKENLDTK_API UClass* Z_Construct_UClass_ALDtkSpawnEntity_NoRegister();
+CHICKENLDTK_API UClass* Z_Construct_UClass_ULDtkEntityReplacementDef_NoRegister();
 CHICKENLDTK_API UClass* Z_Construct_UClass_ULDtkMapAsset_NoRegister();
 CHICKENLDTK_API UScriptStruct* Z_Construct_UScriptStruct_FLDtkEntity();
-COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 PROCEDURALMESHCOMPONENT_API UClass* Z_Construct_UClass_UProceduralMeshComponent_NoRegister();
@@ -50,7 +49,7 @@ struct Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::NewProp_Entity = { "Entity", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(LDtkLevelRenderer_eventOnOverrideEntity_Parms, Entity), Z_Construct_UScriptStruct_FLDtkEntity, METADATA_PARAMS(0, nullptr) }; // 3070829396
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::NewProp_Entity = { "Entity", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(LDtkLevelRenderer_eventOnOverrideEntity_Parms, Entity), Z_Construct_UScriptStruct_FLDtkEntity, METADATA_PARAMS(0, nullptr) }; // 686704704
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity_Statics::NewProp_Entity,
 };
@@ -127,17 +126,22 @@ struct Z_Construct_UClass_ALDtkLevelRenderer_Statics
 		{ "Category", "LDtkLevelRenderer" },
 		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LayerHeightLookup_MetaData[] = {
+		{ "Category", "Map" },
+		{ "ModuleRelativePath", "Public/LDtkLevelRenderer.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MapAsset;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MeshComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Material;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_EntityLookup_ValueProp;
-	static const UECodeGen_Private::FStrPropertyParams NewProp_EntityLookup_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_EntityLookup;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_EntityLookup;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_LayerHeightLookup_ValueProp;
+	static const UECodeGen_Private::FStrPropertyParams NewProp_LayerHeightLookup_Key_KeyProp;
+	static const UECodeGen_Private::FMapPropertyParams NewProp_LayerHeightLookup;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity, "OnOverrideEntity" }, // 2524170436
+		{ &Z_Construct_UFunction_ALDtkLevelRenderer_OnOverrideEntity, "OnOverrideEntity" }, // 2580136732
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -148,16 +152,18 @@ struct Z_Construct_UClass_ALDtkLevelRenderer_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_MapAsset = { "MapAsset", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALDtkLevelRenderer, MapAsset), Z_Construct_UClass_ULDtkMapAsset_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MapAsset_MetaData), NewProp_MapAsset_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_MeshComponent = { "MeshComponent", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALDtkLevelRenderer, MeshComponent), Z_Construct_UClass_UProceduralMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MeshComponent_MetaData), NewProp_MeshComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_Material = { "Material", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALDtkLevelRenderer, Material), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Material_MetaData), NewProp_Material_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup_ValueProp = { "EntityLookup", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_ALDtkSpawnEntity_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup_Key_KeyProp = { "EntityLookup_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup = { "EntityLookup", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALDtkLevelRenderer, EntityLookup), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EntityLookup_MetaData), NewProp_EntityLookup_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup = { "EntityLookup", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALDtkLevelRenderer, EntityLookup), Z_Construct_UClass_ULDtkEntityReplacementDef_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EntityLookup_MetaData), NewProp_EntityLookup_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_LayerHeightLookup_ValueProp = { "LayerHeightLookup", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_LayerHeightLookup_Key_KeyProp = { "LayerHeightLookup_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_LayerHeightLookup = { "LayerHeightLookup", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ALDtkLevelRenderer, LayerHeightLookup), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LayerHeightLookup_MetaData), NewProp_LayerHeightLookup_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ALDtkLevelRenderer_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_MapAsset,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_MeshComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_Material,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_EntityLookup,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_LayerHeightLookup_ValueProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_LayerHeightLookup_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ALDtkLevelRenderer_Statics::NewProp_LayerHeightLookup,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ALDtkLevelRenderer_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ALDtkLevelRenderer_Statics::DependentSingletons[])() = {
@@ -196,10 +202,10 @@ ALDtkLevelRenderer::~ALDtkLevelRenderer() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ALDtkLevelRenderer, ALDtkLevelRenderer::StaticClass, TEXT("ALDtkLevelRenderer"), &Z_Registration_Info_UClass_ALDtkLevelRenderer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALDtkLevelRenderer), 2740361196U) },
+		{ Z_Construct_UClass_ALDtkLevelRenderer, ALDtkLevelRenderer::StaticClass, TEXT("ALDtkLevelRenderer"), &Z_Registration_Info_UClass_ALDtkLevelRenderer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ALDtkLevelRenderer), 2682884237U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_2007084993(TEXT("/Script/ChickenLDTK"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_204165994(TEXT("/Script/ChickenLDTK"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_CookingGame_Plugins_ChickenLDTK_Source_ChickenLDTK_Public_LDtkLevelRenderer_h__Script_ChickenLDTK_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
