@@ -2,7 +2,7 @@
 
 A LDTK Importer for Unreal Engine 5
 
-Work In Progress - Barely Usable
+Work In Progress - VERY EARLY
 
 currently can import and render tile layers, Import Entities, Load AutoTiles, Load IntGrids, Generate Collisions
 
